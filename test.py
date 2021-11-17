@@ -19,9 +19,15 @@ import datetime
 # test_dict = pickle.loads(test_p)
 # # print(test_dict)
 
-import os
-print("8"*10)
-print(__file__)
-print(os.path.abspath(__file__))
-mypath = os.path.join('name',*['zx','hj','cx'])
-print(mypath)
+# import os
+# print("8"*10)
+# print(__file__)
+# print(os.path.abspath(__file__))
+# mypath = os.path.join('name',*['zx','hj','cx'])
+# print(mypath)
+
+from datetime import datetime
+mytime1 = datetime.strptime("2021-11-16","%Y-%m-%d").date()
+mytime2 = datetime.now().date()
+print(mytime1,mytime2)
+print(mytime1 == mytime2)
