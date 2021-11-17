@@ -115,7 +115,7 @@ class LoginView(View):
         if not re.match(r'^[a-zA-Z0-9_-]{5,20}$', username):
             return http.HttpResponseForbidden('请输入正确的用户名或手机号')
 
-        user = authenticate(username=username,password=password)
+        user = authenticate(request,username=username,password=password)
         if not user:
             return render(request, 'login.html', {'account_errmsg': '用户名或密码错误'})
         login(request, user)

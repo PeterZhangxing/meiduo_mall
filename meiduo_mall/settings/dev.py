@@ -54,8 +54,8 @@ INSTALLED_APPS = [
     'orders',
     'payment',
     'django_crontab',
-    'meiduo_admin',
     'corsheaders',
+    'meiduo_admin',
 ]
 
 MIDDLEWARE = [
@@ -242,7 +242,8 @@ LOGGING = {
 }
 
 AUTH_USER_MODEL = 'users.User'
-AUTHENTICATION_BACKENDS = ['users.utils.UsernameMobileAuthBackend']
+# AUTHENTICATION_BACKENDS = ['users.utils.UsernameMobileAuthBackend']
+AUTHENTICATION_BACKENDS = ['meiduo_mall.utils.authenticate.MeiduoModelBackend']
 LOGIN_URL = '/login/'
 
 
@@ -307,4 +308,7 @@ REST_FRAMEWORK = {
 }
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1),
+    'JWT_RESPONSE_PAYLOAD_HANDLER': 'meiduo_admin.utils.jwt_response_payload_handler',
 }
+
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
